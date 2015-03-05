@@ -1,1 +1,12 @@
-Jacubz gai lol
+Name:             Epic Lute
+Style:            16-bit
+                  Top-down
+                  RT
+                  Action with puzzle elements
+Player Objective: To build the music track and obtain an epic lute
+
+Gameplay:         Level-based
+                  Pushing blocks
+                  Danger tiles
+                  Damaging projectiles
+                  Completing levels grants powers as well as soundtrack
