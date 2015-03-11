@@ -14,6 +14,8 @@ Gameplay:         Level-based
                   WASD(QE)
                   Open doors menu
 
+Business Model:   Pay to win / hats
+
 Powers:           Based on 4 levels (drums, lute, bass, synth) with rewards to help complete final level (reward Fender lute?)
 | Drums            | Lute  | Bass              | Synth        |
 |******************|*******|*******************|**************|
