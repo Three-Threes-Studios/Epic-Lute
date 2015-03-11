@@ -3,7 +3,7 @@ Style:            16-bit
                   Top-down
                   RT
                   Action with puzzle elements
-                  Midieval? Underground? Ambiguous?
+                  Medieval? Underground? Ambiguous?
 Player Objective: To build the music track and obtain an epic lute
 
 Gameplay:         Level-based
