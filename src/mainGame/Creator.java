@@ -7,6 +7,14 @@ import java.util.Calendar;
 
 public class Creator extends Pusher {
 
+	public Creator(int[] position, boolean canBeDestroyed,
+			boolean blocksProjectiles, boolean isProjectile,
+			String graphicPath, int speed, int direction, int[][] path, boolean loop) {
+		super(position, canBeDestroyed, blocksProjectiles, isProjectile, graphicPath,
+				speed, direction, path, loop);
+		// TODO Auto-generated constructor stub
+	}
+
 	public Date stunTimer;
 	
 	@Override

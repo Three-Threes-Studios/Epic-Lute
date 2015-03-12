@@ -1,7 +1,62 @@
 package mainGame;
 
-public interface PathObject {
+import java.awt.image.BufferedImage;
 
-	//public int[][] path;
+public abstract class PathObject extends GameObject{
+
+	public int[][] path;
+	public int index;
+	public boolean loop;
+	
+	public PathObject(int[] position, boolean canBeDestroyed,
+			boolean blocksProjectiles, boolean isProjectile,
+			String graphicPath, int speed, int direction, int[][] path,
+			boolean loop){
+		super(position, canBeDestroyed,
+			blocksProjectiles, isProjectile,
+		    graphicPath, speed, direction);
+		this.index = 0;
+		this.path = path;
+		this.loop = loop;
+	}
+	
+	public boolean proceed(){ //returns whether its ready to be destroyed TODO: direction. diagonal?
+		if (path.length==0) return false; //checks if the object is stationary
+		
+		int[] heading = getHeading();
+		
+		//moves the object
+		position[0] += heading[0]*speed;
+		position[1] += heading[1]*speed;
+		
+		//checks if its time to move on the path
+		boolean arrived = true;
+		if ( heading[0]>0 && position[0]<path[index][0]) {arrived = false;}
+		else if (heading[0]<0 && position[0]>path[index][0]) {arrived = false;}
+		if (heading[1]>0 && position[1]<path[index][1]) {arrived = false;}
+		else if (heading[1]<0 && position[1]>path[index][1]) {arrived = false;}
+		if (arrived) { //if the object is arrived, it updates the destination or says to destroy the object
+			if (!loop) return true;
+			position[0] = path[index][0]; //dont do position = path[index] because pointers
+			position[1] = path[index][1];
+			index++;
+			if (index >= path.length) index = 0;
+		}
+		return false;
+	}
+	
+	private int[] getHeading(){
+		//heading[0] is 1 if going left, -1 if right, 0 if neither
+		//heading[1] is 1 if going down, -1 if up, 0 if neither
+		int previousIndex = index-1;
+		if (index-1 < 0) previousIndex = path.length-1;
+		int[] heading = {0,0};
+		if (path[index][0] < path[previousIndex][0]) heading[0] = -1;
+		else if (path[index][0] > path[previousIndex][0]) heading[0] = 1;
+		if (path[index][1] < path[previousIndex][1]) heading[1] = -1;
+		else if (path[index][1] > path[previousIndex][1]) heading[1] = 1;
+		return heading;
+	}
+	
 	
 }
