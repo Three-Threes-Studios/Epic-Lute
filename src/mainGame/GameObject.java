@@ -17,10 +17,12 @@ public abstract class GameObject {
 	public BufferedImage graphic;
 	public int speed;
 	public int direction;
+	public int width;
+	public int height;
 	
 	public GameObject(int[] position, boolean canBeDestroyed,
 			boolean blocksProjectiles, boolean isProjectile,
-			String graphicPath, int speed, int direction){
+			String graphicPath, int speed, int direction, int width, int height){
 		this.position = position;
 		this.canBeDestroyed = canBeDestroyed;
 		this.blocksProjectiles = blocksProjectiles;
@@ -33,21 +35,27 @@ public abstract class GameObject {
 		}
 		this.speed = speed;
 		this.direction = direction;
+		this.width = width;
+		this.height = height;
 	}
 	
 	public static double[] breakDirection(int direction){
 		double[] broken = new double[2];
 		double radians = Math.toRadians((double) direction);
-		broken[0] = Math.sin(radians);
-		broken[1] = Math.cos(radians);
+		broken[0] = -Math.sin(radians);
+		broken[1] = -Math.cos(radians);
 		return broken;
 	}
 	
 	
 	public abstract void destroy();
-	public abstract Rectangle getBounds();
-	public abstract void paint(Graphics2D g);
 	
+	public Rectangle getBounds(){
+		return new Rectangle(position[0],position[1],width,height);
+	}
+	
+	public abstract void paint(Graphics2D g);
+	public abstract boolean onCollision(GameObject g); //returns whether or not the object is ready to be destroyed
 	
 	
 }

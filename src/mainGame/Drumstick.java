@@ -5,12 +5,15 @@ import java.awt.Rectangle;
 
 public class Drumstick extends PathObject {
 
-	public static final int distance = 32; //distance in pixels
+	public static final int distance = 128; //distance in pixels
 	
 	public Drumstick(Player player) {
-		super(player.position, true, true, true, "", //TODO: put in graphic path for drumstick
-				player.speed, player.direction, 
-				new int[][]{{(int)breakDirection(player.direction)[0]*distance,(int)breakDirection(player.direction)[1]*distance}},
+		super(player.position.clone(), true, true, true, "", //TODO: put in graphic path for drumstick
+				player.speed*2, player.direction, 10, 10,
+				new int[][]{player.position.clone(),
+			{(int)breakDirection(player.direction)[0]*distance+player.position[0],
+					(int)breakDirection(player.direction)[1]*distance+player.position[1]}},
+
 				false); //TODO: change speed if needed
 		// TODO Auto-generated constructor stub
 	}
@@ -21,20 +24,22 @@ public class Drumstick extends PathObject {
 		
 	}
 
+	/*
 	@Override
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	public void paint(Graphics2D g) {
-		// TODO Auto-generated method stub
+		g.fillRect(position[0], position[1], 10,10); //TODO: replace this placeholder with the real graphic
 		
 	}
 	
-	public void onCollision(GameObject o){
-		
+	@Override
+	public boolean onCollision(GameObject o){
+		return false;
 	}
 
 

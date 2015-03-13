@@ -9,9 +9,10 @@ public class Creator extends Pusher {
 
 	public Creator(int[] position, boolean canBeDestroyed,
 			boolean blocksProjectiles, boolean isProjectile,
-			String graphicPath, int speed, int direction, int[][] path, boolean loop) {
+			String graphicPath, int speed, int direction,
+			int width, int height, int[][] path, boolean loop) {
 		super(position, canBeDestroyed, blocksProjectiles, isProjectile, graphicPath,
-				speed, direction, path, loop);
+				speed, direction, width, height, path, loop);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -23,11 +24,12 @@ public class Creator extends Pusher {
 		
 	}
 
+	/*
 	@Override
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} */
 
 	@Override
 	public void paint(Graphics2D g) {
@@ -41,6 +43,11 @@ public class Creator extends Pusher {
 	
 	public Pusher createPusher(){
 		return null;
+	}
+	
+	@Override
+	public boolean onCollision(GameObject o){
+		return false;
 	}
 	
 }
