@@ -39,6 +39,8 @@ public class Drumstick extends PathObject {
 	
 	@Override
 	public boolean onCollision(GameObject o){
+		if (o.isProjectile) return true;
+		if (o.blocksProjectiles && !(o instanceof Player)) return true;
 		return false;
 	}
 

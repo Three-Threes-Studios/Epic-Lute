@@ -45,7 +45,7 @@ public class Player extends GameObject {
 
 	@Override
 	public void destroy() {
-		// TODO sent back to start of level
+		System.out.println("should be game over"); // TODO sent back to start of level
 	}
 
 	/*

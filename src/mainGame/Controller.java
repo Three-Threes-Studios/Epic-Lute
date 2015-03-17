@@ -69,9 +69,12 @@ public class Controller extends JPanel {
 			PathObject pathObject = (PathObject) objectList.get(i);
 			if ( pathObject.proceed() ) readyForDestruction.add(i);
 		}
+		int count = 0;
 		for (Integer i : readyForDestruction){
-			objectList.get(i.intValue()).destroy();
-			objectList.remove(i.intValue());
+			objectList.get(i.intValue()-count).destroy();
+			objectList.remove(i.intValue()-count);
+			count++;
+			
 		}
 		
 	}
@@ -90,9 +93,14 @@ public class Controller extends JPanel {
 				}
 			}
 		}
+		int count = 0;
 		for (Integer i : readyForDestruction){
-			objectList.get(i.intValue()).destroy();
-			objectList.remove(i.intValue());
+			objectList.get( i.intValue()-count ).destroy();
+			if (i != 0) {
+				objectList.remove( i.intValue()-count );
+				count++;
+			}
+			else {} //TODO reset map
 		}
 	}
 	
@@ -135,7 +143,7 @@ public class Controller extends JPanel {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		controller.objectList.add(new Pusher(new int[]{200,200},
+		controller.objectList.add(new Destroyer(new int[]{200,200},
 				true,false,true,"",1,0,20,20,new int[][]{{200,250},{250,250},{250,200},{200,200}},
 				true)); //test pusher
 		controller.objectList.add(new Pusher(new int[]{300,300},

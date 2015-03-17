@@ -30,12 +30,15 @@ public class Destroyer extends PathObject {
 
 	@Override
 	public void paint(Graphics2D g) {
-		g.fillRect(position[0], position[1], 10,10); //TODO: replace this placeholder with the real graphic
+		g.fillRect(position[0], position[1], width, height); //TODO: replace this placeholder with the real graphic
 		
 	}
 	
 	@Override
 	public boolean onCollision(GameObject o){
+		if (o.blocksProjectiles && isProjectile){
+			return true;
+		}
 		return false;
 	}
 

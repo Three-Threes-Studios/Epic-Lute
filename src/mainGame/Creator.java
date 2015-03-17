@@ -33,7 +33,7 @@ public class Creator extends Pusher {
 
 	@Override
 	public void paint(Graphics2D g) {
-		// TODO Auto-generated method stub
+		g.fillRect(position[0], position[1], width, height); //TODO: replace this placeholder with the real graphic
 		
 	}
 	
