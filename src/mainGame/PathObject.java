@@ -52,7 +52,7 @@ public abstract class PathObject extends GameObject{
 		return false;
 	}
 	
-	private int[] getHeading(){
+	protected int[] getHeading(){
 		//heading[0] is 1 if going left, -1 if right, 0 if neither
 		//heading[1] is 1 if going down, -1 if up, 0 if neither
 		int previousIndex = index-1;

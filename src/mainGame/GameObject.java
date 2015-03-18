@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public abstract class GameObject {
+public abstract class GameObject implements Cloneable {
 
 	public int[] position;
 	public boolean canBeDestroyed;
@@ -39,6 +39,10 @@ public abstract class GameObject {
 		this.height = height;
 	}
 	
+	protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+	
 	public static double[] breakDirection(int direction){
 		double[] broken = new double[2];
 		double radians = Math.toRadians((double) direction);
@@ -51,7 +55,7 @@ public abstract class GameObject {
 	public abstract void destroy();
 	
 	public Rectangle getBounds(){
-		return new Rectangle(position[0],position[1],width,height);
+		return new Rectangle(position[0],position[1],width-1,height-1);
 	}
 	
 	public abstract void paint(Graphics2D g);

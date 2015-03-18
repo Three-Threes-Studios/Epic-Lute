@@ -36,7 +36,7 @@ public class Destroyer extends PathObject {
 	
 	@Override
 	public boolean onCollision(GameObject o){
-		if (o.blocksProjectiles && isProjectile){
+		if (o.blocksProjectiles && isProjectile && !(o instanceof Creator)){
 			return true;
 		}
 		return false;

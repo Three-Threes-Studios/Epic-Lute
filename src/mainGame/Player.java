@@ -60,10 +60,6 @@ public class Player extends GameObject {
 		
 	}
 	
-	public Drumstick throwDrumstick(){
-		return null;
-	}
-	
 	public void luteDash(){
 		return;
 	}
@@ -76,7 +72,13 @@ public class Player extends GameObject {
 		else if (g instanceof Pusher) { //this kinda works somehow i guess??
 			
 			position[0] -= velocity[0] * speed;
-			position[1] -= velocity[1] * speed;			
+			if (!getBounds().intersects(g.getBounds())) return false;
+			
+			position[0] += velocity[0] * speed;
+			position[1] -= velocity[1] * speed;
+			if (!getBounds().intersects(g.getBounds())) return false;
+			
+			position[0] -= velocity[0] * speed;
 			
 			if (!getBounds().intersects(g.getBounds())) return false;
 			position[0] += velocity[0] * speed;

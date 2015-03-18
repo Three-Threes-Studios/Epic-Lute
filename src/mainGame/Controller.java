@@ -79,6 +79,21 @@ public class Controller extends JPanel {
 		
 	}
 	
+	public void checkCreations(){
+		ArrayList<GameObject> moreObjects = new ArrayList<GameObject>();
+		for (GameObject o : objectList){
+			if (o instanceof Creator){
+				PathObject created = ((Creator)o).create();
+				if (created != null){
+					moreObjects.add(created);
+				}
+			}
+		}
+		for (GameObject o : moreObjects){
+			objectList.add(o);
+		}
+	}
+	
 	public void checkCollisions(){
 		ArrayList<Integer> readyForDestruction = new ArrayList<Integer>();
 		for (int i = 0; i < objectList.size(); i++ ){
@@ -96,7 +111,7 @@ public class Controller extends JPanel {
 		int count = 0;
 		for (Integer i : readyForDestruction){
 			objectList.get( i.intValue()-count ).destroy();
-			if (i != 0) {
+			if (i != 0 && objectList.get( i.intValue()-count ).canBeDestroyed) {
 				objectList.remove( i.intValue()-count );
 				count++;
 			}
@@ -145,22 +160,47 @@ public class Controller extends JPanel {
 		
 		controller.objectList.add(new Destroyer(new int[]{200,200},
 				true,false,true,"",1,0,20,20,new int[][]{{200,250},{250,250},{250,200},{200,200}},
-				true)); //test pusher
+				true)); //test destroyer
 		controller.objectList.add(new Pusher(new int[]{300,300},
 				true,false,true,"",1,0,10,10,new int[][]{{300,300},{300,350}},
-				false)); //test pusher
+				false)); //test a gameobject that does not loop
+		
+		controller.objectList.add(new Pusher(new int[]{200,200},
+				true,true,false,"",1,0,200,20,new int[][]{{300,300}},
+				true)); //test wall
+		
+		controller.objectList.add(new Destroyer(new int[]{200,200},
+				false,false,true,"",1,0,70,70,new int[][]{{0,50}},
+				true)); //test hazard tile
+		
+		
+		Destroyer prototype = new Destroyer(new int[]{0,0},
+				true,false,true,"",3,0,20,20,new int[][]{{0,0},{0,0}},
+				false); //test
+		
+		
+		controller.objectList.add(new Creator(new int[]{300,50},
+				false,true,false,"",1,0,50,50,new int[][]{{400,50},{300,50}},
+				true,prototype,2000,0L,180));
+		
 		
 		((Player)controller.objectList.get(0)).drums = true;
-		/*int[] position, boolean canBeDestroyed,
+		/*Creator(int[] position, boolean canBeDestroyed,
 			boolean blocksProjectiles, boolean isProjectile,
-			String graphicPath, int speed, int direction, int[][] path, boolean loop*/
+			String graphicPath, int speed, int direction,
+			int width, int height, int[][] path, boolean loop,
+			GameObject prototype, int rate, long wait, int fireDirection)*/
 		
 		//System.out.println(controller.objectList.get(1).position[0]);
 		//System.out.println(controller.objectList.get(1).position[1]);
 		while (true) { //game loop
 			//System.out.println(controller.objectList.get(1).position[1]);
 			controller.manageInput();
+			
+			controller.checkCreations();
+			
 			controller.move();
+			
 			controller.checkCollisions();
 			controller.repaint();
 			Thread.sleep(10);
