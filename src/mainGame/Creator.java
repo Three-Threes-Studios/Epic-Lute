@@ -26,7 +26,7 @@ public class Creator extends Pusher {
 		this.rate = rate;
 		this.prototype = prototype;
 		this.stunTimer = 0L;
-		this.createTimer = wait;
+		this.createTimer = System.currentTimeMillis() - wait;
 		this.fireDirection = fireDirection;
 	}
 
@@ -58,8 +58,8 @@ public class Creator extends Pusher {
 			PathObject created;
 			try {
 				created = (PathObject) prototype.clone();
-				created.position[0] = position[0];
-				created.position[1] = position[1];
+				created.position[0] = position[0] + (width/2) - (created.width/2);
+				created.position[1] = position[1] + (height/2) - (created.height/2);
 				if (fireDirection != -1) created.direction = fireDirection;
 				else created.direction = direction;
 				created.path[0][0] = position[0];
@@ -80,7 +80,7 @@ public class Creator extends Pusher {
 				if (created.direction==90 || created.direction==270){
 					int temp = created.height;
 					created.height = created.width;
-					created.width = temp;
+					created.width = temp; //TODO rotate
 				}
 				createTimer = System.currentTimeMillis();
 				return created;

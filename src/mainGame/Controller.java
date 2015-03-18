@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -173,7 +175,6 @@ public class Controller extends JPanel {
 				false,false,true,"",1,0,70,70,new int[][]{{0,50}},
 				true)); //test hazard tile
 		
-		
 		Destroyer prototype = new Destroyer(new int[]{0,0},
 				true,false,true,"",3,0,20,20,new int[][]{{0,0},{0,0}},
 				false); //test
@@ -185,6 +186,7 @@ public class Controller extends JPanel {
 		
 		
 		((Player)controller.objectList.get(0)).drums = true;
+		
 		/*Creator(int[] position, boolean canBeDestroyed,
 			boolean blocksProjectiles, boolean isProjectile,
 			String graphicPath, int speed, int direction,

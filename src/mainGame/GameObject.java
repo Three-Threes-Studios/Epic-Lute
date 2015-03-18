@@ -28,7 +28,7 @@ public abstract class GameObject implements Cloneable {
 		this.blocksProjectiles = blocksProjectiles;
 		this.isProjectile = isProjectile;
 		try{
-			this.graphic = ImageIO.read(new File(graphicPath));
+			this.graphic = ImageIO.read(new File("graphics\\"+graphicPath));
 		} catch (IOException e){
 			System.out.printf("could not find graphic %s\n",graphicPath);
 			this.graphic = null;

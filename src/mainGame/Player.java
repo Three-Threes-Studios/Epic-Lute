@@ -1,5 +1,6 @@
 package mainGame;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.File;
@@ -24,7 +25,7 @@ public class Player extends GameObject {
 	public int[] velocity;
 	
 	public Player(){
-		super( new int[2] ,true,true,false,"blueCircle.png",3,0, 20, 20); //3 is default speed
+		super( new int[2] ,true,true,false,"blueCircle.png",3,0, 30, 30); //3 is default speed
 		position = new int[2];
 		position[0] = 100; //default position
 		position[1] = 100;
@@ -56,7 +57,8 @@ public class Player extends GameObject {
 
 	@Override
 	public void paint(Graphics2D g) {
-		g.fillRect(position[0], position[1], width, height); //TODO: replace this placeholder with the real graphic
+		//g.fillRect(position[0], position[1], width, height); //TODO: replace this placeholder with the real graphic
+		g.drawImage(graphic, position[0]-35, position[1]-35, null);
 		
 	}
 	
