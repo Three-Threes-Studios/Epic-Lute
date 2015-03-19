@@ -1,0 +1,28 @@
+Name:             Epic Lute
+Style:            16-bit
+                  Top-down
+                  RT
+                  Action with puzzle elements
+                  Medieval? Underground? Ambiguous?
+Player Objective: To build the music track and obtain an epic lute
+
+Gameplay:         Level-based
+                  Pushing blocks
+                  Danger tiles
+                  Damaging projectiles (thrown by mobs and static environment)
+                  Completing levels grants powers as well as soundtrack
+                  WASD(QE)
+                  Open doors menu
+
+Business Model:   Pay to win / hats
+
+Powers:           Based on 4 levels (drums, lute, bass, synth) with rewards to help complete final level (reward Fender lute?)
+| Drums            | Lute  | Bass              | Synth        |
+|******************|*******|*******************|**************|
+| x Throw drumstick| x Dash| x Passive - bass  | x Passive -  |
+|   as projectile  |       |   constant; slows |   speed boost|
+|   deflection     |       |   down projectiles|              |
+| x Throw drumstick|       |                   |              |
+|   skill shot     |       |                   |              |
+| x Throw drumstick|       |                   |              |
+|   kill mob       |       |                   |              |
