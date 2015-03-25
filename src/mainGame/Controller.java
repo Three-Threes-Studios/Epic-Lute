@@ -177,7 +177,7 @@ public class Controller extends JPanel {
 		
 		Destroyer prototype = new Destroyer(new int[]{0,0},
 				true,false,true,"",3,0,20,20,new int[][]{{0,0},{0,0}},
-				false); //test
+				false); //test arrow
 		
 		
 		controller.objectList.add(new Creator(new int[]{300,50},

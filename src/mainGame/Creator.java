@@ -7,10 +7,6 @@ import java.util.Calendar;
 
 public class Creator extends Pusher {
 	
-	static int STUNLENGTH = 5;
-	
-	public long stunTimer;
-	
 	public long createTimer;
 	public int rate; //of fire
 	public int fireDirection;
@@ -25,7 +21,6 @@ public class Creator extends Pusher {
 				speed, direction, width, height, path, loop);
 		this.rate = rate;
 		this.prototype = prototype;
-		this.stunTimer = 0L;
 		this.createTimer = System.currentTimeMillis() - wait;
 		this.fireDirection = fireDirection;
 	}

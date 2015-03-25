@@ -17,8 +17,7 @@ public class Destroyer extends PathObject {
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
+		this.stunTimer = System.currentTimeMillis();
 	}
 
 	/*

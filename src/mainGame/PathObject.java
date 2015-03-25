@@ -1,5 +1,6 @@
 package mainGame;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public abstract class PathObject extends GameObject{
@@ -7,6 +8,10 @@ public abstract class PathObject extends GameObject{
 	public int[][] path;
 	public int index;
 	public boolean loop;
+	
+	public static int STUNLENGTH = 1000;
+	
+	public long stunTimer;
 	
 	public PathObject(int[] position, boolean canBeDestroyed,
 			boolean blocksProjectiles, boolean isProjectile,
@@ -18,11 +23,12 @@ public abstract class PathObject extends GameObject{
 		this.index = 0;
 		this.path = path;
 		this.loop = loop;
+		this.stunTimer = 0L;
 	}
 	
 	public boolean proceed(){ //returns whether its ready to be destroyed TODO: direction. diagonal?
 		if (path.length==0) return false; //checks if the object is stationary
-		
+		else if (System.currentTimeMillis()<stunTimer) return false;
 		int[] heading = getHeading();
 		
 		//moves the object
@@ -50,6 +56,13 @@ public abstract class PathObject extends GameObject{
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void paint(Graphics2D g) {
+		//g.fillRect(position[0], position[1], width, height); //TODO: replace this placeholder with the real graphic
+		g.drawImage(graphic, position[0], position[1], null);
+		
 	}
 	
 	protected int[] getHeading(){
